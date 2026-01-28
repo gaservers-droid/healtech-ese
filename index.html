@@ -12,7 +12,21 @@
   label { font-size: 12px; color: #333; display:block; margin-bottom:6px; }
   select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #bbb; }
   .results { margin-top: 14px; }
-  .pill { display:inline-block; padding: 6px 10px; border: 1px solid #ccc; border-radius: 999px; margin: 6px 6px 0 0; }
+  .pill {
+  cursor: default;
+}
+  a.pill {
+    background: #f5faff;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a.pill:hover {
+    background: #e0efff;
+  }
+
+.pill { display:inline-block; padding: 6px 10px; border: 1px solid #ccc; border-radius: 999px; margin: 6px 6px 0 0; }
   .muted { color: #666; font-size: 13px; }
   .title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
 </style>
@@ -41,6 +55,14 @@
   </div>
 
 <script>
+function renderProduct(code) {
+  const url = PRODUCT_LINKS[code];
+  if (url) {
+    return `<a class="pill" href="${url}" target="_blank">${code}</a>`;
+  }
+  return `<span class="pill">${code}</span>`;
+}
+
 const PRODUCT_LINKS = {
   "ESE-D02": "https://www.motorcyclesrus.com.au/shop/bike-parts/electrical/wiring-harness/exhaust-servo-eliminator-ducati",
   "ESE-D06": "https://www.motorcyclesrus.com.au/shop/bike-parts/electrical/wiring-harness/exhaust-servo-eliminator-ducati-1",
